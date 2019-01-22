@@ -1,0 +1,46 @@
+// See README.txt for information and build instructions.
+//
+// Note: START and END tags are used in comments to define sections used in
+// tutorials.  They are not part of the syntax for Protocol Buffers.
+//
+// To get an in-depth walkthrough of this file and the related examples, see:
+// https://developers.google.com/protocol-buffers/docs/tutorials
+
+// [START declaration]
+syntax = "proto3";
+package tutorial;
+
+import "validate.proto";
+import "google/protobuf/wrappers.proto";
+
+
+
+// [END declaration]
+
+
+// [START csharp_declaration]
+option csharp_namespace = "Google.Protobuf.Examples.AddressBook";
+// [END csharp_declaration]
+
+// [START messages]
+message Person {
+  google.protobuf.Int32Value true_equal = 1     [(validate.rules).int32rules.equal.value    = 5];    
+  google.protobuf.Int32Value true_lt = 2        [(validate.rules).int32rules.lt.value       = 5];    
+  google.protobuf.Int32Value true_lte = 3       [(validate.rules).int32rules.lte.value      = 5];    
+  google.protobuf.Int32Value true_lte2 = 4      [(validate.rules).int32rules.lte.value      = 5];    
+  google.protobuf.Int32Value true_gt = 5        [(validate.rules).int32rules.gt.value       = 5];    
+  google.protobuf.Int32Value true_gte = 6       [(validate.rules).int32rules.gte.value      = 5];
+  google.protobuf.Int32Value true_gte2 = 7      [(validate.rules).int32rules.gte.value      = 5];
+  
+  
+  google.protobuf.Int32Value false_equal = 8  [(validate.rules).int32rules.equal.value      = 5];    
+  google.protobuf.Int32Value false_lt = 9        [(validate.rules).int32rules.lt.value      = 5];    
+  google.protobuf.Int32Value false_lte = 10      [(validate.rules).int32rules.lte.value     = 5];    
+  google.protobuf.Int32Value false_lte2 = 11     [(validate.rules).int32rules.lte.value     = 5];    
+  google.protobuf.Int32Value false_gt = 12       [(validate.rules).int32rules.gt.value      = 5];    
+  google.protobuf.Int32Value false_gte = 13      [(validate.rules).int32rules.gte.value     = 5];    
+  google.protobuf.Int32Value false_gte2 = 14     [(validate.rules).int32rules.gte.value     = 5];
+}
+
+
+// [END messages]
