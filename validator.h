@@ -34,14 +34,16 @@ using google::protobuf::Reflection;
 using google::protobuf::Int32Value;
 using google::protobuf::Message;
 
-
-using rulesOption = vector < pair<string, int32_t> > ;
-
+using rulesOption = vector < pair<string, const FieldDescriptor*> > ;
 
 
-// int32_t validator
+// validator
+
 class Validator {
 public:
+    
+    
+    
     //default constructor does not do anything, just allocates methods and 
     //setMsgToValidate method
     Validator();
@@ -83,7 +85,16 @@ private:
     /*  returns 1 if the checkValue against optionValue logic operation
      *  defined by the constraint string is true, 0 otherwise
      */
-    bool checkMessage(const string constraint, int32_t optionValue, int32_t checkValue);
+    bool checkField(const string constraint, 
+                    const FieldDescriptor* optionValueFieldDescriptor, 
+                    const Message& valueFieldMessage);
+    
+    template <typename T>
+    bool check (const string constraint, 
+                const T checkValue, 
+                const T optionValue);
+    
+    
 };
 
 #endif /* VALIDATOR_H */

@@ -33,7 +33,7 @@ message Person {
   google.protobuf.Int32Value true_gte2 = 7      [(validate.rules).int32rules.gte.value      = 5];
   
   
-  google.protobuf.Int32Value false_equal = 8  [(validate.rules).int32rules.equal.value      = 5];    
+  google.protobuf.Int32Value false_equal = 8     [(validate.rules).int32rules.equal.value   = 5];    
   google.protobuf.Int32Value false_lt = 9        [(validate.rules).int32rules.lt.value      = 5];    
   google.protobuf.Int32Value false_lte = 10      [(validate.rules).int32rules.lte.value     = 5];    
   google.protobuf.Int32Value false_lte2 = 11     [(validate.rules).int32rules.lte.value     = 5];    
