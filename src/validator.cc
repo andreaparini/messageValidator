@@ -142,7 +142,7 @@ rulesOption Validator::getOptionsValues (const FieldDescriptor* fieldDescriptor)
     }
     
     if (fieldDescriptor->options().GetExtension(validate::rules).has_floatrules()) {
-        if (fieldDescriptor->options().GetExtension(validate::rules).floatrules().has_equal()){
+            if (fieldDescriptor->options().GetExtension(validate::rules).floatrules().has_equal()){
             string ruleName = "equal";
             //float_t ruleValue = fieldDescriptor->options().GetExtension(validate::rules).floatrules().equal().value();
             rulesVector.emplace_back(ruleName,fieldDescriptor);

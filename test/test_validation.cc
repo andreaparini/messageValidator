@@ -8,9 +8,9 @@
 #include <vector>
 #include <string>
 
-#include "person.pb.h"
+#include "../proto/test1.pb.h"
 #include "google/protobuf/wrappers.pb.h"
-#include "validator.h"
+#include "../src/validator.h"
 
 using namespace std;
 

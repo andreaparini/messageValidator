@@ -27,7 +27,7 @@
 #include <typeinfo>
 #include <unordered_map>
 
-#include "validate.pb.h"
+#include "../proto/validate.pb.h"
 using namespace std;
 
 using google::protobuf::util::TimeUtil;

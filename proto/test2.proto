@@ -45,8 +45,8 @@ message Person {
    // cases with multiple types, wrong and correct
   google.protobuf.DoubleValue doubletrue_equal = 15     [(validate.rules).doublerules.equal.value    = 5,
                                                          (validate.rules).doublerules.lt.value       = 5];    
-  google.protobuf.DoubleValue doubletrue_lt = 16        [(validate.rules).int32rules.lt.value          = 5
-                                                       ,  (validate.rules).doublerules.equal.value       = 5];    
+  google.protobuf.DoubleValue doubletrue_lt = 16        [(validate.rules).doublerules.lt.value          = 5,  
+                                                         (validate.rules).int32rules.equal.value       = 5];    
   google.protobuf.DoubleValue doubletrue_lte = 17       [(validate.rules).int32rules.lte.value         = 5,
                                                          (validate.rules).int32rules.lt.value      = 5];  
   
