@@ -23,6 +23,9 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <typeindex>
+#include <typeinfo>
+#include <unordered_map>
 
 #include "validate.pb.h"
 using namespace std;

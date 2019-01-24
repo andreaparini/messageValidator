@@ -344,7 +344,7 @@ bool Validator::checkField(const string constraint,
     }
     else if (valueFieldDescriptor->type() == FieldDescriptor::Type::TYPE_DOUBLE) {
 
-        double checkValue = valueFieldMessage.GetReflection()->GetInt32(valueFieldMessage, valueFieldMessage.GetDescriptor()->FindFieldByName("value"));
+        double checkValue = valueFieldMessage.GetReflection()->GetDouble(valueFieldMessage, valueFieldMessage.GetDescriptor()->FindFieldByName("value"));
 
         if (constraint == "equal"){
             double optionValue = optionValueFieldDescriptor->options().GetExtension(validate::rules).doublerules().equal().value();
@@ -476,16 +476,27 @@ bool Validator::check (const string constraint,
             const T checkValue, 
             const T optionValue) 
 {
+    std::unordered_map<std::type_index, std::string> type_names;
+    
+    type_names[std::type_index(typeid(float))] = "float";
+    type_names[std::type_index(typeid(double))] = "double";
+    type_names[std::type_index(typeid(int32_t))] = "int32_t";
+    type_names[std::type_index(typeid(int64_t))] = "int64_t";
+    type_names[std::type_index(typeid(uint32_t))] = "uint32_t";
+    type_names[std::type_index(typeid(uint64_t))] = "uint64_t";
+    
     
     if (constraint == "equal"){
         if (checkValue == optionValue) {
-            cout << "Rule check " << constraint << " succeeded: " << checkValue 
+            cout << type_names[std::type_index(typeid(checkValue))];
+            cout << " Rule check " << constraint << " succeeded: " << checkValue 
                     << " is " << constraint << " to " << optionValue
                     << endl;
             return true;
         } 
         else {
-            cout << "Rule check " << constraint << " failed: " << checkValue 
+            cout << type_names[std::type_index(typeid(checkValue))];
+            cout << " Rule check " << constraint << " failed: " << checkValue 
                     << " is not " << constraint << " to " << optionValue
                     << endl;
             return false;
@@ -493,13 +504,15 @@ bool Validator::check (const string constraint,
     }
     if (constraint == "lt"){
         if (checkValue < optionValue) {
-            cout << "Rule check " << constraint << " succeeded: " << checkValue 
+            cout << type_names[std::type_index(typeid(checkValue))];
+            cout << " Rule check " << constraint << " succeeded: " << checkValue 
                     << " is " << constraint << " to " << optionValue
                     << endl;
             return true;
         } 
         else {
-            cout << "Rule check " << constraint << " failed: " << checkValue 
+            cout << type_names[std::type_index(typeid(checkValue))];
+            cout << " Rule check " << constraint << " failed: " << checkValue 
                     << " is not " << constraint << " to " << optionValue
                     << endl;
             return false;
@@ -507,13 +520,15 @@ bool Validator::check (const string constraint,
     }
     if (constraint == "lte"){
         if (checkValue <= optionValue) {
-            cout << "Rule check " << constraint << " succeeded: " << checkValue 
+            cout << type_names[std::type_index(typeid(checkValue))];
+            cout << " Rule check " << constraint << " succeeded: " << checkValue 
                     << " is " << constraint << " to " << optionValue
                     << endl;
             return true;
         } 
         else {
-            cout << "Rule check " << constraint << " failed: " << checkValue 
+            cout << type_names[std::type_index(typeid(checkValue))];
+            cout << " Rule check " << constraint << " failed: " << checkValue 
                     << " is not " << constraint << " to " << optionValue
                     << endl;
             return false;
@@ -521,13 +536,15 @@ bool Validator::check (const string constraint,
     }
     if (constraint == "gt"){
         if (checkValue > optionValue) {
-            cout << "Rule check " << constraint << " succeeded: " << checkValue 
+            cout << type_names[std::type_index(typeid(checkValue))];
+            cout << " Rule check " << constraint << " succeeded: " << checkValue 
                     << " is " << constraint << " to " << optionValue
                     << endl;
             return true;
         } 
         else {
-            cout << "Rule check " << constraint << " failed: " << checkValue 
+            cout << type_names[std::type_index(typeid(checkValue))];
+            cout << " Rule check " << constraint << " failed: " << checkValue 
                     << " is not " << constraint << " to " << optionValue
                     << endl;
             return false;
@@ -535,13 +552,15 @@ bool Validator::check (const string constraint,
     }
     if (constraint == "gte"){
         if (checkValue >= optionValue) {
-            cout << "Rule check " << constraint << " succeeded: " << checkValue 
+            cout << type_names[std::type_index(typeid(checkValue))];
+            cout << " Rule check " << constraint << " succeeded: " << checkValue 
                     << " is " << constraint << " to " << optionValue
                     << endl;
             return true;
         } 
         else {
-            cout << "Rule check " << constraint << " failed: " << checkValue 
+            cout << type_names[std::type_index(typeid(checkValue))];
+            cout << " Rule check " << constraint << " failed: " << checkValue 
                     << " is not " << constraint << " to " << optionValue
                     << endl;
             return false;
