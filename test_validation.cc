@@ -1,7 +1,6 @@
 // See README.txt for information and build instructions.
 
 #include <fstream>
-#include <google/protobuf/util/time_util.h>
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/message.h>
 #include <iostream>
@@ -15,10 +14,11 @@
 
 using namespace std;
 
-using google::protobuf::util::TimeUtil;
 using google::protobuf::Descriptor;
 using google::protobuf::FieldDescriptor;
 using google::protobuf::Reflection;
+using google::protobuf::Message;
+
 using google::protobuf::FloatValue;
 using google::protobuf::DoubleValue;
 using google::protobuf::Int32Value;
@@ -26,7 +26,6 @@ using google::protobuf::Int64Value;
 using google::protobuf::UInt32Value;
 using google::protobuf::UInt64Value;
 
-using google::protobuf::Message;
 
 
 // Main function:  Reads the entire address book from a file and prints all

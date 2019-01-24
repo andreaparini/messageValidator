@@ -29,11 +29,11 @@ bool Validator::validate (const Message& msgToValidate) {
     
     
     for (unsigned int j = 0; j < descriptor->field_count(); j++) {
-        
+        cout << j << endl;
         const FieldDescriptor* fieldDescriptor = descriptor->field(j);
         
         rulesOption rulesVector = getOptionsValues(fieldDescriptor);
-        
+        cout << "Size: " << rulesVector.size() << endl;
         if (rulesVector.size() > 0) {
             
             if (!checkMismatch(fieldDescriptor)){
@@ -168,7 +168,7 @@ rulesOption Validator::getOptionsValues (const FieldDescriptor* fieldDescriptor)
             rulesVector.emplace_back(ruleName,fieldDescriptor);
         }
     }
-    else if (fieldDescriptor->options().GetExtension(validate::rules).has_doublerules()) {
+    if (fieldDescriptor->options().GetExtension(validate::rules).has_doublerules()) {
         if (fieldDescriptor->options().GetExtension(validate::rules).doublerules().has_equal()){
             string ruleName = "equal";
             //double_t ruleValue = fieldDescriptor->options().GetExtension(validate::rules).doublerules().equal().value();
@@ -195,7 +195,7 @@ rulesOption Validator::getOptionsValues (const FieldDescriptor* fieldDescriptor)
             rulesVector.emplace_back(ruleName,fieldDescriptor);
         }
     } 
-    else if (fieldDescriptor->options().GetExtension(validate::rules).has_int32rules()) {
+    if (fieldDescriptor->options().GetExtension(validate::rules).has_int32rules()) {
         if (fieldDescriptor->options().GetExtension(validate::rules).int32rules().has_equal()){
             string ruleName = "equal";
             //int32_t ruleValue = fieldDescriptor->options().GetExtension(validate::rules).int32rules().equal().value();
@@ -222,7 +222,7 @@ rulesOption Validator::getOptionsValues (const FieldDescriptor* fieldDescriptor)
             rulesVector.emplace_back(ruleName,fieldDescriptor);
         }
     } 
-    else if (fieldDescriptor->options().GetExtension(validate::rules).has_int64rules()) {
+    if (fieldDescriptor->options().GetExtension(validate::rules).has_int64rules()) {
         if (fieldDescriptor->options().GetExtension(validate::rules).int64rules().has_equal()){
             string ruleName = "equal";
             //int64_t ruleValue = fieldDescriptor->options().GetExtension(validate::rules).int64rules().equal().value();
@@ -249,7 +249,7 @@ rulesOption Validator::getOptionsValues (const FieldDescriptor* fieldDescriptor)
             rulesVector.emplace_back(ruleName,fieldDescriptor);
         }
     } 
-    else if (fieldDescriptor->options().GetExtension(validate::rules).has_uint32rules()) {
+    if (fieldDescriptor->options().GetExtension(validate::rules).has_uint32rules()) {
         if (fieldDescriptor->options().GetExtension(validate::rules).uint32rules().has_equal()){
             string ruleName = "equal";
             //uint32_t ruleValue = fieldDescriptor->options().GetExtension(validate::rules).uint32rules().equal().value();
@@ -276,7 +276,7 @@ rulesOption Validator::getOptionsValues (const FieldDescriptor* fieldDescriptor)
             rulesVector.emplace_back(ruleName,fieldDescriptor);
         }
     } 
-    else if (fieldDescriptor->options().GetExtension(validate::rules).has_uint64rules()) {
+    if (fieldDescriptor->options().GetExtension(validate::rules).has_uint64rules()) {
         if (fieldDescriptor->options().GetExtension(validate::rules).uint64rules().has_equal()){
             string ruleName = "equal";
             //uint64_t ruleValue = fieldDescriptor->options().GetExtension(validate::rules).uint64rules().equal().value();
