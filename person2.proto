@@ -1,0 +1,57 @@
+// See README.txt for information and build instructions.
+//
+// Note: START and END tags are used in comments to define sections used in
+// tutorials.  They are not part of the syntax for Protocol Buffers.
+//
+// To get an in-depth walkthrough of this file and the related examples, see:
+// https://developers.google.com/protocol-buffers/docs/tutorials
+
+// [START declaration]
+syntax = "proto3";
+package tutorial2;
+
+import "validate.proto";
+import "google/protobuf/wrappers.proto";
+
+
+
+// [END declaration]
+
+
+// [START csharp_declaration]
+option csharp_namespace = "Google.Protobuf.Examples.AddressBook";
+// [END csharp_declaration]
+
+// [START messages]
+message Person {
+    //cases with wrong type
+  google.protobuf.FloatValue floattrue_equal = 1     [(validate.rules).int32rules.equal.value    = 5];    
+  google.protobuf.FloatValue floattrue_lt = 2        [(validate.rules).int32rules.lt.value       = 5];    
+  google.protobuf.FloatValue floattrue_lte = 3       [(validate.rules).int32rules.lte.value      = 5];    
+  google.protobuf.FloatValue floattrue_lte2 = 4      [(validate.rules).int32rules.lte.value      = 5];    
+  google.protobuf.FloatValue floattrue_gt = 5        [(validate.rules).int32rules.gt.value       = 5];    
+  google.protobuf.FloatValue floattrue_gte = 6       [(validate.rules).int32rules.gte.value      = 5];
+  google.protobuf.FloatValue floattrue_gte2 = 7      [(validate.rules).int32rules.gte.value      = 5];
+  
+   // cases with no type
+  google.protobuf.FloatValue floatfalse_equal = 8;
+  google.protobuf.FloatValue floatfalse_lt = 9;
+  google.protobuf.FloatValue floatfalse_lte = 10;
+  google.protobuf.FloatValue floatfalse_lte2 = 11;
+  google.protobuf.FloatValue floatfalse_gt = 12;
+  google.protobuf.FloatValue floatfalse_gte = 13;
+  google.protobuf.FloatValue floatfalse_gte2 = 14;
+  
+   // cases with multiple types, wrong and correct
+  google.protobuf.DoubleValue doubletrue_equal = 15     [(validate.rules).doublerules.equal.value    = 5,
+                                                         (validate.rules).doublerules.lt.value       = 5];    
+  google.protobuf.DoubleValue doubletrue_lt = 16        [(validate.rules).int32rules.lt.value          = 5
+                                                       ,  (validate.rules).doublerules.equal.value       = 5];    
+  google.protobuf.DoubleValue doubletrue_lte = 17       [(validate.rules).int32rules.lte.value         = 5,
+                                                         (validate.rules).int32rules.lt.value      = 5];  
+  
+  
+}
+
+
+// [END messages]

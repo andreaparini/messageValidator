@@ -2,7 +2,7 @@
 
 .PHONY: all 
 
-all:    test_validation  
+all:    test_validation  test_failures
 	
 
 clean:
@@ -31,6 +31,16 @@ test_validation.o: test_validation.cc protoc_middleman
 	c++ test_validation.cc -c -o test_validation.o `pkg-config --cflags --libs protobuf`
 	c++ person.pb.cc -c -o person.pb.o `pkg-config --cflags --libs protobuf`
 	c++ validate.pb.cc -c -o validate.pb.o `pkg-config --cflags --libs protobuf`
+	
+test_failures: test_failures.o validator.o protoc_middleman
+	pkg-config --cflags protobuf  # fails if protobuf is not installed
+	c++ -Wall -g -o test_failures test_failures.o person2.pb.o validate.pb.o validator.o `pkg-config --cflags --libs protobuf`
+	
+test_failures.o: test_failures.cc protoc_middleman 
+	pkg-config --cflags protobuf  # fails if protobuf is not installed
+	c++ test_failures.cc -c -o test_failures.o `pkg-config --cflags --libs protobuf`
+	c++ person2.pb.cc -c -o person2.pb.o `pkg-config --cflags --libs protobuf`
+	c++ validate.pb.cc -c -o validate.pb.o `pkg-config --cflags --libs protobuf`	
 	
 	
 validator.o:  validator.cc protoc_middleman
