@@ -50,33 +50,31 @@ message FieldRules {
         Int64Rules    int64rules    = 4;
         UInt32Rules   uint32rules   = 5;
         UInt64Rules   uint64rules   = 6;
-        SInt32Rules   sint32rules   = 7;
-        SInt64Rules   sint64rules   = 8;
     }
 }
 
 // FloatRules describes the constraints applied to `float` values
 message FloatRules {
     // Const specifies that this field must be exactly the specified value
-    float equal = 1;
+    google.protobuf.FloatValue equal = 1;
 
     // Lt specifies that this field must be less than the specified value,
     // exclusive
-    float lt = 2;
+    google.protobuf.FloatValue lt = 2;
 
     // Lte specifies that this field must be less than or equal to the
     // specified value, inclusive
-    float lte = 3;
+    google.protobuf.FloatValue lte = 3;
 
     // Gt specifies that this field must be greater than the specified value,
     // exclusive. If the value of Gt is larger than a specified Lt or Lte, the
     // range is reversed.
-    float gt = 4;
+    google.protobuf.FloatValue gt = 4;
 
     // Gte specifies that this field must be greater than or equal to the
     // specified value, inclusive. If the value of Gte is larger than a
     // specified Lt or Lte, the range is reversed.
-    float gte = 5;
+    google.protobuf.FloatValue gte = 5;
 
     
 }
@@ -84,25 +82,25 @@ message FloatRules {
 // DoubleRules describes the constraints applied to `double` values
 message DoubleRules {
     // Const specifies that this field must be exactly the specified value
-    double equal = 1;
+    google.protobuf.DoubleValue equal = 1;
 
     // Lt specifies that this field must be less than the specified value,
     // exclusive
-    double lt = 2;
+    google.protobuf.DoubleValue lt = 2;
 
     // Lte specifies that this field must be less than or equal to the
     // specified value, inclusive
-    double lte = 3;
+    google.protobuf.DoubleValue lte = 3;
 
     // Gt specifies that this field must be greater than the specified value,
     // exclusive. If the value of Gt is larger than a specified Lt or Lte, the
     // range is reversed.
-    double gt = 4;
+    google.protobuf.DoubleValue gt = 4;
 
     // Gte specifies that this field must be greater than or equal to the
     // specified value, inclusive. If the value of Gte is larger than a
     // specified Lt or Lte, the range is reversed.
-    double gte = 5;
+    google.protobuf.DoubleValue gte = 5;
 
     
 }
@@ -136,51 +134,51 @@ message Int32Rules {
 // Int64Rules describes the constraints applied to `int64` values
 message Int64Rules {
     // Const specifies that this field must be exactly the specified value
-    int64 equal = 1;
+    google.protobuf.Int64Value equal = 1;
 
     // Lt specifies that this field must be less than the specified value,
     // exclusive
-    int64 lt = 2;
+    google.protobuf.Int64Value lt = 2;
 
     // Lte specifies that this field must be less than or equal to the
     // specified value, inclusive
-    int64 lte = 3;
+    google.protobuf.Int64Value lte = 3;
 
     // Gt specifies that this field must be greater than the specified value,
     // exclusive. If the value of Gt is larger than a specified Lt or Lte, the
     // range is reversed.
-    int64 gt = 4;
+    google.protobuf.Int64Value gt = 4;
 
     // Gte specifies that this field must be greater than or equal to the
     // specified value, inclusive. If the value of Gte is larger than a
     // specified Lt or Lte, the range is reversed.
-    int64 gte = 5;
+    google.protobuf.Int64Value gte = 5;
 
     
 }
 
-// UInt32Rules describes the constraints applied to `uint32` values
+// UInt32Rules describes the constraints applied to `google.protobuf.UInt32Value` values
 message UInt32Rules {
     // Const specifies that this field must be exactly the specified value
-    uint32 equal = 1;
+    google.protobuf.UInt32Value equal = 1;
 
     // Lt specifies that this field must be less than the specified value,
     // exclusive
-    uint32 lt = 2;
+    google.protobuf.UInt32Value lt = 2;
 
     // Lte specifies that this field must be less than or equal to the
     // specified value, inclusive
-    uint32 lte = 3;
+    google.protobuf.UInt32Value lte = 3;
 
     // Gt specifies that this field must be greater than the specified value,
     // exclusive. If the value of Gt is larger than a specified Lt or Lte, the
     // range is reversed.
-    uint32 gt = 4;
+    google.protobuf.UInt32Value gt = 4;
 
     // Gte specifies that this field must be greater than or equal to the
     // specified value, inclusive. If the value of Gte is larger than a
     // specified Lt or Lte, the range is reversed.
-    uint32 gte = 5;
+    google.protobuf.UInt32Value gte = 5;
 
     
 }
@@ -188,78 +186,27 @@ message UInt32Rules {
 // UInt64Rules describes the constraints applied to `uint64` values
 message UInt64Rules {
     // Const specifies that this field must be exactly the specified value
-    uint64 equal = 1;
+    google.protobuf.UInt64Value equal = 1;
 
     // Lt specifies that this field must be less than the specified value,
     // exclusive
-    uint64 lt = 2;
+    google.protobuf.UInt64Value lt = 2;
 
     // Lte specifies that this field must be less than or equal to the
     // specified value, inclusive
-    uint64 lte = 3;
+    google.protobuf.UInt64Value lte = 3;
 
     // Gt specifies that this field must be greater than the specified value,
     // exclusive. If the value of Gt is larger than a specified Lt or Lte, the
     // range is reversed.
-    uint64 gt = 4;
+    google.protobuf.UInt64Value gt = 4;
 
     // Gte specifies that this field must be greater than or equal to the
     // specified value, inclusive. If the value of Gte is larger than a
     // specified Lt or Lte, the range is reversed.
-    uint64 gte = 5;
+    google.protobuf.UInt64Value gte = 5;
 
     
 }
 
-// SInt32Rules describes the constraints applied to `sint32` values
-message SInt32Rules {
-    // Const specifies that this field must be exactly the specified value
-    sint32 equal = 1;
-
-    // Lt specifies that this field must be less than the specified value,
-    // exclusive
-    sint32 lt = 2;
-
-    // Lte specifies that this field must be less than or equal to the
-    // specified value, inclusive
-    sint32 lte = 3;
-
-    // Gt specifies that this field must be greater than the specified value,
-    // exclusive. If the value of Gt is larger than a specified Lt or Lte, the
-    // range is reversed.
-    sint32 gt = 4;
-
-    // Gte specifies that this field must be greater than or equal to the
-    // specified value, inclusive. If the value of Gte is larger than a
-    // specified Lt or Lte, the range is reversed.
-    sint32 gte = 5;
-
-    
-}
-
-// SInt64Rules describes the constraints applied to `sint64` values
-message SInt64Rules {
-    // Const specifies that this field must be exactly the specified value
-    sint64 equal = 1;
-
-    // Lt specifies that this field must be less than the specified value,
-    // exclusive
-    sint64 lt = 2;
-
-    // Lte specifies that this field must be less than or equal to the
-    // specified value, inclusive
-    sint64 lte = 3;
-
-    // Gt specifies that this field must be greater than the specified value,
-    // exclusive. If the value of Gt is larger than a specified Lt or Lte, the
-    // range is reversed.
-    sint64 gt = 4;
-
-    // Gte specifies that this field must be greater than or equal to the
-    // specified value, inclusive. If the value of Gte is larger than a
-    // specified Lt or Lte, the range is reversed.
-    sint64 gte = 5;
-
-    
-}
 
