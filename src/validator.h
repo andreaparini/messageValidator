@@ -45,15 +45,14 @@ using rulesOption = vector < pair<string, const FieldDescriptor*> > ;
 class Validator {
 public:
     
-    
-    
     //default constructor does not do anything, just allocates methods and 
     //setMsgToValidate method
     Validator();
     
     virtual ~Validator();
     
-    
+    enum ValidationOutput {VALIDATED, NOT_VALIDATED, 
+                           NOTHING_TO_CHECK, INPUT_ERRORS};
     
     
     /* validate method throws an error if the message does not satisfy the set
@@ -61,7 +60,7 @@ public:
      * true = no constraint violated
      * false = constraint violated
      */ 
-    bool validate(const Message& msgToValidate);
+    vector<ValidationOutput> validate(const Message& msgToValidate);
     
 private:
     
