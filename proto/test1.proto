@@ -8,107 +8,126 @@
 
 // [START declaration]
 syntax = "proto3";
-package tutorial;
+package test1;
 
 import "validate.proto";
 import "google/protobuf/wrappers.proto";
 
-
-
 // [END declaration]
 
 
-// [START csharp_declaration]
-option csharp_namespace = "Google.Protobuf.Examples.AddressBook";
-// [END csharp_declaration]
-
 // [START messages]
-message Person {
-  
-  google.protobuf.DoubleValue doubletrue_equal  = 1     [(validate.rules).doublerules.equal.value    = 5];    
-  google.protobuf.DoubleValue doubletrue_lt     = 2     [(validate.rules).doublerules.lt.value       = 5];    
-  google.protobuf.DoubleValue doubletrue_lte    = 3     [(validate.rules).doublerules.lte.value      = 5];    
-  google.protobuf.DoubleValue doubletrue_lte2   = 4     [(validate.rules).doublerules.lte.value      = 5];    
-  google.protobuf.DoubleValue doubletrue_gt     = 5     [(validate.rules).doublerules.gt.value       = 5];    
-  google.protobuf.DoubleValue doubletrue_gte    = 6     [(validate.rules).doublerules.gte.value      = 5];
-  google.protobuf.DoubleValue doubletrue_gte2   = 7     [(validate.rules).doublerules.gte.value      = 5];
-   
-  google.protobuf.DoubleValue doublefalse_equal = 8     [(validate.rules).doublerules.equal.value   = 5];    
-  google.protobuf.DoubleValue doublefalse_lt    = 9     [(validate.rules).doublerules.lt.value      = 5];    
-  google.protobuf.DoubleValue doublefalse_lte   = 10    [(validate.rules).doublerules.lte.value     = 5];    
-  google.protobuf.DoubleValue doublefalse_lte2  = 11    [(validate.rules).doublerules.lte.value     = 5];    
-  google.protobuf.DoubleValue doublefalse_gt    = 12    [(validate.rules).doublerules.gt.value      = 5];    
-  google.protobuf.DoubleValue doublefalse_gte   = 13    [(validate.rules).doublerules.gte.value     = 5];    
-  google.protobuf.DoubleValue doublefalse_gte2  = 14    [(validate.rules).doublerules.gte.value     = 5];
-  
-  
-  google.protobuf.Int32Value int32true_equal    = 15    [(validate.rules).int32rules.equal.value    = 5];    
-  google.protobuf.Int32Value int32true_lt       = 16    [(validate.rules).int32rules.lt.value       = 5];    
-  google.protobuf.Int32Value int32true_lte      = 17    [(validate.rules).int32rules.lte.value      = 5];    
-  google.protobuf.Int32Value int32true_lte2     = 18    [(validate.rules).int32rules.lte.value      = 5];    
-  google.protobuf.Int32Value int32true_gt       = 19    [(validate.rules).int32rules.gt.value       = 5];    
-  google.protobuf.Int32Value int32true_gte      = 20    [(validate.rules).int32rules.gte.value      = 5];
-  google.protobuf.Int32Value int32true_gte2     = 21    [(validate.rules).int32rules.gte.value      = 5];
-  
-  google.protobuf.Int32Value int32false_equal   = 22    [(validate.rules).int32rules.equal.value   = 5];    
-  google.protobuf.Int32Value int32false_lt      = 23    [(validate.rules).int32rules.lt.value      = 5];    
-  google.protobuf.Int32Value int32false_lte     = 24    [(validate.rules).int32rules.lte.value     = 5];    
-  google.protobuf.Int32Value int32false_lte2    = 25    [(validate.rules).int32rules.lte.value     = 5];    
-  google.protobuf.Int32Value int32false_gt      = 26    [(validate.rules).int32rules.gt.value      = 5];    
-  google.protobuf.Int32Value int32false_gte     = 27    [(validate.rules).int32rules.gte.value     = 5];    
-  google.protobuf.Int32Value int32false_gte2    = 28    [(validate.rules).int32rules.gte.value     = 5];
-  
-  
-  google.protobuf.Int64Value int64true_equal    = 29    [(validate.rules).int64rules.equal.value    = 5];    
-  google.protobuf.Int64Value int64true_lt       = 30    [(validate.rules).int64rules.lt.value       = 5];    
-  google.protobuf.Int64Value int64true_lte      = 31    [(validate.rules).int64rules.lte.value      = 5];    
-  google.protobuf.Int64Value int64true_lte2     = 32    [(validate.rules).int64rules.lte.value      = 5];    
-  google.protobuf.Int64Value int64true_gt       = 33    [(validate.rules).int64rules.gt.value       = 5];    
-  google.protobuf.Int64Value int64true_gte      = 34    [(validate.rules).int64rules.gte.value      = 5];
-  google.protobuf.Int64Value int64true_gte2     = 35    [(validate.rules).int64rules.gte.value      = 5];
-  
-  google.protobuf.Int64Value int64false_equal   = 36    [(validate.rules).int64rules.equal.value   = 5];    
-  google.protobuf.Int64Value int64false_lt      = 37    [(validate.rules).int64rules.lt.value      = 5];    
-  google.protobuf.Int64Value int64false_lte     = 38    [(validate.rules).int64rules.lte.value     = 5];    
-  google.protobuf.Int64Value int64false_lte2    = 39    [(validate.rules).int64rules.lte.value     = 5];    
-  google.protobuf.Int64Value int64false_gt      = 40    [(validate.rules).int64rules.gt.value      = 5];    
-  google.protobuf.Int64Value int64false_gte     = 41    [(validate.rules).int64rules.gte.value     = 5];    
-  google.protobuf.Int64Value int64false_gte2    = 42    [(validate.rules).int64rules.gte.value     = 5];
-  
-  
-  google.protobuf.UInt32Value uint32true_equal  = 43    [(validate.rules).uint32rules.equal.value    = 5];    
-  google.protobuf.UInt32Value uint32true_lt     = 44    [(validate.rules).uint32rules.lt.value       = 5];    
-  google.protobuf.UInt32Value uint32true_lte    = 45    [(validate.rules).uint32rules.lte.value      = 5];    
-  google.protobuf.UInt32Value uint32true_lte2   = 46    [(validate.rules).uint32rules.lte.value      = 5];    
-  google.protobuf.UInt32Value uint32true_gt     = 47    [(validate.rules).uint32rules.gt.value       = 5];    
-  google.protobuf.UInt32Value uint32true_gte    = 48    [(validate.rules).uint32rules.gte.value      = 5];
-  google.protobuf.UInt32Value uint32true_gte2   = 49    [(validate.rules).uint32rules.gte.value      = 5];
-  
-  google.protobuf.UInt32Value uint32false_equal = 50    [(validate.rules).uint32rules.equal.value   = 5];    
-  google.protobuf.UInt32Value uint32false_lt    = 51    [(validate.rules).uint32rules.lt.value      = 5];    
-  google.protobuf.UInt32Value uint32false_lte   = 52    [(validate.rules).uint32rules.lte.value     = 5];    
-  google.protobuf.UInt32Value uint32false_lte2  = 53    [(validate.rules).uint32rules.lte.value     = 5];    
-  google.protobuf.UInt32Value uint32false_gt    = 54    [(validate.rules).uint32rules.gt.value      = 5];    
-  google.protobuf.UInt32Value uint32false_gte   = 55    [(validate.rules).uint32rules.gte.value     = 5];    
-  google.protobuf.UInt32Value uint32false_gte2  = 56    [(validate.rules).uint32rules.gte.value     = 5];
-  
-  
-  google.protobuf.UInt64Value uint64true_equal  = 57    [(validate.rules).uint64rules.equal.value    = 5];    
-  google.protobuf.UInt64Value uint64true_lt     = 58    [(validate.rules).uint64rules.lt.value       = 5];    
-  google.protobuf.UInt64Value uint64true_lte    = 59    [(validate.rules).uint64rules.lte.value      = 5];    
-  google.protobuf.UInt64Value uint64true_lte2   = 60    [(validate.rules).uint64rules.lte.value      = 5];    
-  google.protobuf.UInt64Value uint64true_gt     = 61    [(validate.rules).uint64rules.gt.value       = 5];    
-  google.protobuf.UInt64Value uint64true_gte    = 62    [(validate.rules).uint64rules.gte.value      = 5];
-  google.protobuf.UInt64Value uint64true_gte2   = 63    [(validate.rules).uint64rules.gte.value      = 5];
-  
-  google.protobuf.UInt64Value uint64false_equal = 64    [(validate.rules).uint64rules.equal.value   = 5];    
-  google.protobuf.UInt64Value uint64false_lt    = 65    [(validate.rules).uint64rules.lt.value      = 5];    
-  google.protobuf.UInt64Value uint64false_lte   = 66    [(validate.rules).uint64rules.lte.value     = 5];    
-  google.protobuf.UInt64Value uint64false_lte2  = 67    [(validate.rules).uint64rules.lte.value     = 5];    
-  google.protobuf.UInt64Value uint64false_gt    = 68    [(validate.rules).uint64rules.gt.value      = 5];    
-  google.protobuf.UInt64Value uint64false_gte   = 69    [(validate.rules).uint64rules.gte.value     = 5];    
-  google.protobuf.UInt64Value uint64false_gte2  = 70    [(validate.rules).uint64rules.gte.value     = 5];
+
+message DoubleEqual {  
+  google.protobuf.DoubleValue val  = 1     [(validate.rules).doublerules.equal.value    = 5];    
 }
+message DoubleLt {  
+  google.protobuf.DoubleValue val  = 1     [(validate.rules).doublerules.lt.value    = 5];    
+}
+message DoubleLte {  
+  google.protobuf.DoubleValue val  = 1     [(validate.rules).doublerules.lte.value    = 5];    
+}
+message DoubleLte2 {  
+  google.protobuf.DoubleValue val  = 1     [(validate.rules).doublerules.lte.value    = 5];    
+}
+message DoubleGt {  
+  google.protobuf.DoubleValue val  = 1     [(validate.rules).doublerules.gt.value    = 5];    
+}
+message DoubleGte {  
+  google.protobuf.DoubleValue val  = 1     [(validate.rules).doublerules.gte.value    = 5];    
+}
+message DoubleGte2 {  
+  google.protobuf.DoubleValue val  = 1     [(validate.rules).doublerules.gte.value    = 5];    
+}
+
+message Int32Equal {  
+  google.protobuf.Int32Value val  = 1     [(validate.rules).int32rules.equal.value    = 5];    
+}
+message Int32Lt {  
+  google.protobuf.Int32Value val  = 1     [(validate.rules).int32rules.lt.value    = 5];    
+}
+message Int32Lte {  
+  google.protobuf.Int32Value val  = 1     [(validate.rules).int32rules.lte.value    = 5];    
+}
+message Int32Lte2 {  
+  google.protobuf.Int32Value val  = 1     [(validate.rules).int32rules.lte.value    = 5];    
+}
+message Int32Gt {  
+  google.protobuf.Int32Value val  = 1     [(validate.rules).int32rules.gt.value    = 5];    
+}
+message Int32Gte {  
+  google.protobuf.Int32Value val  = 1     [(validate.rules).int32rules.gte.value    = 5];    
+}
+message Int32Gte2 {  
+  google.protobuf.Int32Value val  = 1     [(validate.rules).int32rules.gte.value    = 5];    
+}
+
+message Int64Equal {  
+  google.protobuf.Int64Value val  = 1     [(validate.rules).int64rules.equal.value    = 5];    
+}
+message Int64Lt {  
+  google.protobuf.Int64Value val  = 1     [(validate.rules).int64rules.lt.value    = 5];    
+}
+message Int64Lte {  
+  google.protobuf.Int64Value val  = 1     [(validate.rules).int64rules.lte.value    = 5];    
+}
+message Int64Lte2 {  
+  google.protobuf.Int64Value val  = 1     [(validate.rules).int64rules.lte.value    = 5];    
+}
+message Int64Gt {  
+  google.protobuf.Int64Value val  = 1     [(validate.rules).int64rules.gt.value    = 5];    
+}
+message Int64Gte {  
+  google.protobuf.Int64Value val  = 1     [(validate.rules).int64rules.gte.value    = 5];    
+}
+message Int64Gte2 {  
+  google.protobuf.Int64Value val  = 1     [(validate.rules).int64rules.gte.value    = 5];    
+}
+
+message UInt32Equal {  
+  google.protobuf.UInt32Value val  = 1     [(validate.rules).uint32rules.equal.value    = 5];    
+}
+message UInt32Lt {  
+  google.protobuf.UInt32Value val  = 1     [(validate.rules).uint32rules.lt.value    = 5];    
+}
+message UInt32Lte {  
+  google.protobuf.UInt32Value val  = 1     [(validate.rules).uint32rules.lte.value    = 5];    
+}
+message UInt32Lte2 {  
+  google.protobuf.UInt32Value val  = 1     [(validate.rules).uint32rules.lte.value    = 5];    
+}
+message UInt32Gt {  
+  google.protobuf.UInt32Value val  = 1     [(validate.rules).uint32rules.gt.value    = 5];    
+}
+message UInt32Gte {  
+  google.protobuf.UInt32Value val  = 1     [(validate.rules).uint32rules.gte.value    = 5];    
+}
+message UInt32Gte2 {  
+  google.protobuf.UInt32Value val  = 1     [(validate.rules).uint32rules.gte.value    = 5];    
+}
+
+message UInt64Equal {  
+  google.protobuf.UInt64Value val  = 1     [(validate.rules).uint64rules.equal.value    = 5];    
+}
+message UInt64Lt {  
+  google.protobuf.UInt64Value val  = 1     [(validate.rules).uint64rules.lt.value    = 5];    
+}
+message UInt64Lte {  
+  google.protobuf.UInt64Value val  = 1     [(validate.rules).uint64rules.lte.value    = 5];    
+}
+message UInt64Lte2 {  
+  google.protobuf.UInt64Value val  = 1     [(validate.rules).uint64rules.lte.value    = 5];    
+}
+message UInt64Gt {  
+  google.protobuf.UInt64Value val  = 1     [(validate.rules).uint64rules.gt.value    = 5];    
+}
+message UInt64Gte {  
+  google.protobuf.UInt64Value val  = 1     [(validate.rules).uint64rules.gte.value    = 5];    
+}
+message UInt64Gte2 {  
+  google.protobuf.UInt64Value val  = 1     [(validate.rules).uint64rules.gte.value    = 5];    
+}
+
 
 
 // [END messages]

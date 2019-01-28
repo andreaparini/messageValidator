@@ -22,10 +22,10 @@ cleandata: clean
 
 
 # test_main takes the .o files and builds the test executable
-$(TEST_DIR)/test_main: $(TEST_DIR)/test1_validation.o $(TEST_DIR)/test2_failures.o $(SRC_DIR)/validator.o $(PROTO_DIR)/protoc_middleman
+$(TEST_DIR)/test_main: $(TEST_DIR)/test.o $(SRC_DIR)/validator.o $(PROTO_DIR)/protoc_middleman
 	pkg-config --cflags protobuf  # fails if protobuf is not installed
 	c++ $(TEST_DIR)/test_main.cc -c -o $(TEST_DIR)/test_main.o `pkg-config --cflags --libs protobuf`
-	c++ -Wall -g -o $(TEST_DIR)/test_main $(TEST_DIR)/test_main.o $(TEST_DIR)/test1_validation.o $(TEST_DIR)/test2_failures.o \
+	c++ -Wall -g -o $(TEST_DIR)/test_main $(TEST_DIR)/test_main.o $(TEST_DIR)/test.o \
 	$(PROTO_DIR)/test1.pb.o $(PROTO_DIR)/test2.pb.o $(PROTO_DIR)/validate.pb.o \
 	$(SRC_DIR)/validator.o `pkg-config --cflags --libs protobuf`
 
@@ -36,19 +36,12 @@ $(PROTO_DIR)/protoc_middleman: $(PROTO_DIR)/test1.proto $(PROTO_DIR)/test2.proto
 	@touch $(PROTO_DIR)/protoc_middleman
 
 	
-$(TEST_DIR)/test1_validation.o: $(TEST_DIR)/test1_validation.cc $(PROTO_DIR)/protoc_middleman 
+$(TEST_DIR)/test.o: $(TEST_DIR)/test.cc $(PROTO_DIR)/protoc_middleman 
 	pkg-config --cflags protobuf  # fails if protobuf is not installed
-	c++ $(TEST_DIR)/test1_validation.cc -c -o $(TEST_DIR)/test1_validation.o `pkg-config --cflags --libs protobuf`
+	c++ $(TEST_DIR)/test.cc -c -o $(TEST_DIR)/test.o `pkg-config --cflags --libs protobuf`
 	c++ $(PROTO_DIR)/test1.pb.cc -c -o $(PROTO_DIR)/test1.pb.o `pkg-config --cflags --libs protobuf`
 	c++ $(PROTO_DIR)/validate.pb.cc -c -o $(PROTO_DIR)/validate.pb.o `pkg-config --cflags --libs protobuf`
 
-	
-$(TEST_DIR)/test2_failures.o: $(TEST_DIR)/test2_failures.cc $(PROTO_DIR)/protoc_middleman 
-	pkg-config --cflags protobuf  # fails if protobuf is not installed
-	c++ $(TEST_DIR)/test2_failures.cc -c -o $(TEST_DIR)/test2_failures.o `pkg-config --cflags --libs protobuf`
-	c++ $(PROTO_DIR)/test2.pb.cc -c -o $(PROTO_DIR)/test2.pb.o `pkg-config --cflags --libs protobuf`
-	c++ $(PROTO_DIR)/validate.pb.cc -c -o $(PROTO_DIR)/validate.pb.o `pkg-config --cflags --libs protobuf`	
-	
 	
 $(SRC_DIR)/validator.o:  $(SRC_DIR)/validator.cc $(PROTO_DIR)/protoc_middleman
 	pkg-config --cflags protobuf  # fails if protobuf is not installed
