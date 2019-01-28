@@ -1,53 +1,52 @@
 # See README.txt.
 
+TEST_DIR = test
+SRC_DIR = src
+PROTO_DIR = proto
+
 .PHONY: all 
 
-all:    test_validation  test_failures
+all:    $(TEST_DIR)/test_main
 	
 
 clean:
-	rm -f test_validation 
-	rm -f protoc_middleman person.pb.cc person.pb.h validate.pb.cc validate.pb.h
-	rm -f test_validation.o person.pb.o validate.pb.o validator.o
-	rm -f *.pyc
-	rmdir tutorial 2>/dev/null || true
-	rmdir com/example/tutorial 2>/dev/null || true
-	rmdir com/example 2>/dev/null || true
-	rmdir com 2>/dev/null || true
+	rm -f $(TEST_DIR)/test_main
+	rm -f $(PROTO_DIR)/protoc_middleman $(PROTO_DIR)/*.pb.cc $(PROTO_DIR)/*.pb.h
+	rm -f $(TEST_DIR)/*.o 
+	rm -f $(SRC_DIR)/validator.o
+	
+	
 	
 cleandata: clean
 	rm -f *.data 
 
-protoc_middleman: person.proto validate.proto
-	protoc $$PROTO_PATH --cpp_out=.  *.proto
-	@touch protoc_middleman
-	
-test_validation: test_validation.o validator.o protoc_middleman
+
+# test_main takes the .o files and builds the test executable
+$(TEST_DIR)/test_main: $(TEST_DIR)/test.o $(SRC_DIR)/validator.o $(PROTO_DIR)/protoc_middleman
 	pkg-config --cflags protobuf  # fails if protobuf is not installed
-	c++ -Wall -g -o test_validation test_validation.o person.pb.o validate.pb.o validator.o `pkg-config --cflags --libs protobuf`
+	c++ $(TEST_DIR)/test_main.cc -c -o $(TEST_DIR)/test_main.o `pkg-config --cflags --libs protobuf`
+	c++ -Wall -g -o $(TEST_DIR)/test_main $(TEST_DIR)/test_main.o $(TEST_DIR)/test.o \
+	$(PROTO_DIR)/test1.pb.o $(PROTO_DIR)/test2.pb.o $(PROTO_DIR)/validate.pb.o \
+	$(SRC_DIR)/validator.o `pkg-config --cflags --libs protobuf`
+
+
+# protoc_middleman compiles the protos
+$(PROTO_DIR)/protoc_middleman: $(PROTO_DIR)/test1.proto $(PROTO_DIR)/test2.proto $(PROTO_DIR)/validate.proto
+	protoc -I=$(PROTO_DIR) --cpp_out=$(PROTO_DIR)  $(PROTO_DIR)/*.proto
+	@touch $(PROTO_DIR)/protoc_middleman
+
 	
-test_validation.o: test_validation.cc protoc_middleman 
+$(TEST_DIR)/test.o: $(TEST_DIR)/test.cc $(PROTO_DIR)/protoc_middleman 
 	pkg-config --cflags protobuf  # fails if protobuf is not installed
-	c++ test_validation.cc -c -o test_validation.o `pkg-config --cflags --libs protobuf`
-	c++ person.pb.cc -c -o person.pb.o `pkg-config --cflags --libs protobuf`
-	c++ validate.pb.cc -c -o validate.pb.o `pkg-config --cflags --libs protobuf`
+	c++ $(TEST_DIR)/test.cc -c -o $(TEST_DIR)/test.o `pkg-config --cflags --libs protobuf`
+	c++ $(PROTO_DIR)/test1.pb.cc -c -o $(PROTO_DIR)/test1.pb.o `pkg-config --cflags --libs protobuf`
+	c++ $(PROTO_DIR)/validate.pb.cc -c -o $(PROTO_DIR)/validate.pb.o `pkg-config --cflags --libs protobuf`
+
 	
-test_failures: test_failures.o validator.o protoc_middleman
+$(SRC_DIR)/validator.o:  $(SRC_DIR)/validator.cc $(PROTO_DIR)/protoc_middleman
 	pkg-config --cflags protobuf  # fails if protobuf is not installed
-	c++ -Wall -g -o test_failures test_failures.o person2.pb.o validate.pb.o validator.o `pkg-config --cflags --libs protobuf`
-	
-test_failures.o: test_failures.cc protoc_middleman 
-	pkg-config --cflags protobuf  # fails if protobuf is not installed
-	c++ test_failures.cc -c -o test_failures.o `pkg-config --cflags --libs protobuf`
-	c++ person2.pb.cc -c -o person2.pb.o `pkg-config --cflags --libs protobuf`
-	c++ validate.pb.cc -c -o validate.pb.o `pkg-config --cflags --libs protobuf`	
-	
-	
-validator.o:  validator.cc protoc_middleman
-	pkg-config --cflags protobuf  # fails if protobuf is not installed
-	c++ validator.cc -c -o validator.o `pkg-config --cflags --libs protobuf`
-	c++ person.pb.cc -c -o person.pb.o `pkg-config --cflags --libs protobuf`
-	c++ validate.pb.cc -c -o validate.pb.o `pkg-config --cflags --libs protobuf`
+	c++ $(SRC_DIR)/validator.cc -c -o $(SRC_DIR)/validator.o `pkg-config --cflags --libs protobuf`
+	c++ $(PROTO_DIR)/validate.pb.cc -c -o $(PROTO_DIR)/validate.pb.o `pkg-config --cflags --libs protobuf`
 	
 	
 	

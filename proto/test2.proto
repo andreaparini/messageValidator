@@ -1,0 +1,59 @@
+// See README.txt for information and build instructions.
+//
+// Note: START and END tags are used in comments to define sections used in
+// tutorials.  They are not part of the syntax for Protocol Buffers.
+//
+// To get an in-depth walkthrough of this file and the related examples, see:
+// https://developers.google.com/protocol-buffers/docs/tutorials
+
+// [START declaration]
+syntax = "proto3";
+package test2;
+
+import "validate.proto";
+import "google/protobuf/wrappers.proto";
+
+
+
+// [END declaration]
+
+
+
+// [START messages]
+message WrongTypes {
+    //cases with wrong type
+    google.protobuf.Int64Value val1 = 1     [(validate.rules).int32rules.equal.value    = 5];    
+    google.protobuf.Int64Value val2 = 2     [(validate.rules).int32rules.lt.value       = 5];    
+    google.protobuf.Int64Value val3 = 3     [(validate.rules).int32rules.lte.value      = 5];    
+    google.protobuf.Int64Value val4 = 4     [(validate.rules).int32rules.lte.value      = 5];    
+    google.protobuf.Int64Value val5 = 5     [(validate.rules).int32rules.gt.value       = 5];    
+    google.protobuf.Int64Value val6 = 6     [(validate.rules).int32rules.gte.value      = 5];
+    google.protobuf.Int64Value val7 = 7     [(validate.rules).int32rules.gte.value      = 5];
+}
+message NoOptions {
+    // cases with no type
+    google.protobuf.Int64Value val8  = 8;
+    google.protobuf.Int64Value val9  = 9;
+    google.protobuf.Int64Value val10 = 10;
+    google.protobuf.Int64Value val11 = 11;
+    google.protobuf.Int64Value val12 = 12;
+    google.protobuf.Int64Value val13 = 13;
+    google.protobuf.Int64Value val14 = 14;
+}
+ 
+message MultipleOptions1 {
+    // cases with multiple types, wrong and correct
+    google.protobuf.DoubleValue val15 = 15  [(validate.rules).doublerules.equal.value  = 5,
+                                             (validate.rules).doublerules.lte.value    = 5];
+}    
+message MultipleOptions2 {
+    google.protobuf.DoubleValue val16 = 16  [(validate.rules).doublerules.lte.value    = 5,  
+                                             (validate.rules).int32rules.equal.value   = 5];    
+}
+message MultipleOptions3 {
+    google.protobuf.DoubleValue val17 = 17  [(validate.rules).int32rules.lte.value     = 5,
+                                             (validate.rules).int32rules.lt.value      = 5];    
+}
+
+
+// [END messages]

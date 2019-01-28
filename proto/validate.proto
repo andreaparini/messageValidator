@@ -42,41 +42,14 @@ extend google.protobuf.FieldOptions {
 // FieldRules encapsulates the rules for each type of field. Depending on the
 // field, the correct set should be used to ensure proper validations.
 message FieldRules {
-    oneof type {
+    //oneof type {
         // Scalar Field Types
-        FloatRules    floatrules    = 1;
-        DoubleRules   doublerules   = 2;
-        Int32Rules    int32rules    = 3;
-        Int64Rules    int64rules    = 4;
-        UInt32Rules   uint32rules   = 5;
-        UInt64Rules   uint64rules   = 6;
-    }
-}
-
-// FloatRules describes the constraints applied to `float` values
-message FloatRules {
-    // Const specifies that this field must be exactly the specified value
-    google.protobuf.FloatValue equal = 1;
-
-    // Lt specifies that this field must be less than the specified value,
-    // exclusive
-    google.protobuf.FloatValue lt = 2;
-
-    // Lte specifies that this field must be less than or equal to the
-    // specified value, inclusive
-    google.protobuf.FloatValue lte = 3;
-
-    // Gt specifies that this field must be greater than the specified value,
-    // exclusive. If the value of Gt is larger than a specified Lt or Lte, the
-    // range is reversed.
-    google.protobuf.FloatValue gt = 4;
-
-    // Gte specifies that this field must be greater than or equal to the
-    // specified value, inclusive. If the value of Gte is larger than a
-    // specified Lt or Lte, the range is reversed.
-    google.protobuf.FloatValue gte = 5;
-
-    
+        DoubleRules   doublerules   = 1;
+        Int32Rules    int32rules    = 2;
+        Int64Rules    int64rules    = 3;
+        UInt32Rules   uint32rules   = 4;
+        UInt64Rules   uint64rules   = 5;
+    //}
 }
 
 // DoubleRules describes the constraints applied to `double` values

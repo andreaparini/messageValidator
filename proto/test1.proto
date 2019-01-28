@@ -1,0 +1,133 @@
+// See README.txt for information and build instructions.
+//
+// Note: START and END tags are used in comments to define sections used in
+// tutorials.  They are not part of the syntax for Protocol Buffers.
+//
+// To get an in-depth walkthrough of this file and the related examples, see:
+// https://developers.google.com/protocol-buffers/docs/tutorials
+
+// [START declaration]
+syntax = "proto3";
+package test1;
+
+import "validate.proto";
+import "google/protobuf/wrappers.proto";
+
+// [END declaration]
+
+
+// [START messages]
+
+message DoubleEqual {  
+  google.protobuf.DoubleValue val  = 1     [(validate.rules).doublerules.equal.value    = 5];    
+}
+message DoubleLt {  
+  google.protobuf.DoubleValue val  = 1     [(validate.rules).doublerules.lt.value    = 5];    
+}
+message DoubleLte {  
+  google.protobuf.DoubleValue val  = 1     [(validate.rules).doublerules.lte.value    = 5];    
+}
+message DoubleLte2 {  
+  google.protobuf.DoubleValue val  = 1     [(validate.rules).doublerules.lte.value    = 5];    
+}
+message DoubleGt {  
+  google.protobuf.DoubleValue val  = 1     [(validate.rules).doublerules.gt.value    = 5];    
+}
+message DoubleGte {  
+  google.protobuf.DoubleValue val  = 1     [(validate.rules).doublerules.gte.value    = 5];    
+}
+message DoubleGte2 {  
+  google.protobuf.DoubleValue val  = 1     [(validate.rules).doublerules.gte.value    = 5];    
+}
+
+message Int32Equal {  
+  google.protobuf.Int32Value val  = 1     [(validate.rules).int32rules.equal.value    = 5];    
+}
+message Int32Lt {  
+  google.protobuf.Int32Value val  = 1     [(validate.rules).int32rules.lt.value    = 5];    
+}
+message Int32Lte {  
+  google.protobuf.Int32Value val  = 1     [(validate.rules).int32rules.lte.value    = 5];    
+}
+message Int32Lte2 {  
+  google.protobuf.Int32Value val  = 1     [(validate.rules).int32rules.lte.value    = 5];    
+}
+message Int32Gt {  
+  google.protobuf.Int32Value val  = 1     [(validate.rules).int32rules.gt.value    = 5];    
+}
+message Int32Gte {  
+  google.protobuf.Int32Value val  = 1     [(validate.rules).int32rules.gte.value    = 5];    
+}
+message Int32Gte2 {  
+  google.protobuf.Int32Value val  = 1     [(validate.rules).int32rules.gte.value    = 5];    
+}
+
+message Int64Equal {  
+  google.protobuf.Int64Value val  = 1     [(validate.rules).int64rules.equal.value    = 5];    
+}
+message Int64Lt {  
+  google.protobuf.Int64Value val  = 1     [(validate.rules).int64rules.lt.value    = 5];    
+}
+message Int64Lte {  
+  google.protobuf.Int64Value val  = 1     [(validate.rules).int64rules.lte.value    = 5];    
+}
+message Int64Lte2 {  
+  google.protobuf.Int64Value val  = 1     [(validate.rules).int64rules.lte.value    = 5];    
+}
+message Int64Gt {  
+  google.protobuf.Int64Value val  = 1     [(validate.rules).int64rules.gt.value    = 5];    
+}
+message Int64Gte {  
+  google.protobuf.Int64Value val  = 1     [(validate.rules).int64rules.gte.value    = 5];    
+}
+message Int64Gte2 {  
+  google.protobuf.Int64Value val  = 1     [(validate.rules).int64rules.gte.value    = 5];    
+}
+
+message UInt32Equal {  
+  google.protobuf.UInt32Value val  = 1     [(validate.rules).uint32rules.equal.value    = 5];    
+}
+message UInt32Lt {  
+  google.protobuf.UInt32Value val  = 1     [(validate.rules).uint32rules.lt.value    = 5];    
+}
+message UInt32Lte {  
+  google.protobuf.UInt32Value val  = 1     [(validate.rules).uint32rules.lte.value    = 5];    
+}
+message UInt32Lte2 {  
+  google.protobuf.UInt32Value val  = 1     [(validate.rules).uint32rules.lte.value    = 5];    
+}
+message UInt32Gt {  
+  google.protobuf.UInt32Value val  = 1     [(validate.rules).uint32rules.gt.value    = 5];    
+}
+message UInt32Gte {  
+  google.protobuf.UInt32Value val  = 1     [(validate.rules).uint32rules.gte.value    = 5];    
+}
+message UInt32Gte2 {  
+  google.protobuf.UInt32Value val  = 1     [(validate.rules).uint32rules.gte.value    = 5];    
+}
+
+message UInt64Equal {  
+  google.protobuf.UInt64Value val  = 1     [(validate.rules).uint64rules.equal.value    = 5];    
+}
+message UInt64Lt {  
+  google.protobuf.UInt64Value val  = 1     [(validate.rules).uint64rules.lt.value    = 5];    
+}
+message UInt64Lte {  
+  google.protobuf.UInt64Value val  = 1     [(validate.rules).uint64rules.lte.value    = 5];    
+}
+message UInt64Lte2 {  
+  google.protobuf.UInt64Value val  = 1     [(validate.rules).uint64rules.lte.value    = 5];    
+}
+message UInt64Gt {  
+  google.protobuf.UInt64Value val  = 1     [(validate.rules).uint64rules.gt.value    = 5];    
+}
+message UInt64Gte {  
+  google.protobuf.UInt64Value val  = 1     [(validate.rules).uint64rules.gte.value    = 5];    
+}
+message UInt64Gte2 {  
+  google.protobuf.UInt64Value val  = 1     [(validate.rules).uint64rules.gte.value    = 5];    
+}
+
+
+
+// [END messages]
