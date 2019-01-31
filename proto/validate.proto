@@ -42,14 +42,12 @@ extend google.protobuf.FieldOptions {
 // FieldRules encapsulates the rules for each type of field. Depending on the
 // field, the correct set should be used to ensure proper validations.
 message FieldRules {
-    //oneof type {
         // Scalar Field Types
         DoubleRules   doublerules   = 1;
         Int32Rules    int32rules    = 2;
         Int64Rules    int64rules    = 3;
         UInt32Rules   uint32rules   = 4;
         UInt64Rules   uint64rules   = 5;
-    //}
 }
 
 // DoubleRules describes the constraints applied to `double` values
